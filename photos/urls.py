@@ -8,5 +8,5 @@ from . import views
 urlpatterns = [
     path('',views.photos_today, name = 'gallery-Home'),
     path('search/',views.search_results, name='search_results'),
-    path('archives/',views.past_days_photos, name = 'past-Photos')
+    path('archives/<past_date>/',views.past_days_photos, name = 'past-Photos')
 ]

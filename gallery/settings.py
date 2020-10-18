@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,15 +33,22 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
 # Application definition
 
 INSTALLED_APPS = [
-    'photos.apps.PhotosConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'photos.apps.PhotosConfig',
     'bootstrap4',
+    'cloudinary',
 ]
+
+cloudinary.config( 
+  cloud_name = os.environ.get('CLOUD_NAME'), 
+  api_key = os.environ.get('API_KEY'), 
+  api_secret = os.environ.get('API_SECRET'), 
+)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

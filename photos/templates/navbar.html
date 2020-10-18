@@ -10,13 +10,33 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{% url 'gallery-Home'%}">The Moringa Tribune</a>
+                <a class="active" href="{% url 'gallery-Home'%}">PhotoGrid</a>
             </div>
+            <!--Categories and locations-->
+            <ul>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-auto" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
+                    <div class="dropdown-menu" aria-labelledby="category">
+                        <a class="dropdown-item" href="#">cuisine</a>
+                        <a class="dropdown-item" href="#">delicacy</a>
+                        <a class="dropdown-item" href="#">Culture</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle mr-auto" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Location</a>
+                    <div class="dropdown-menu" aria-labelledby="category">
+                        <a class="dropdown-item" href="#">Germany</a>
+                        <a class="dropdown-item" href="#">France</a>
+                        <a class="dropdown-item" href="#">Ngong</a>
+                    </div>
+                </li>
+            </ul>
+
             <!-- Adding a search form -->
             <div class="col-sm-4 col-md-4 navbar-right">
                 <form class="navbar-form" role="search" action="{% url 'gallery-Home' %}">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search Article" name="article">
+                        <input type="text" class="form-control" placeholder="Search Image" name="article">
                         <div class="input-group-btn">
                             <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                         </div>
@@ -30,26 +50,3 @@
 </body>
 
 </html>
-
-
-<nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand mr-4" href="{% url 'gallery-Home'%}">PhotoGrid</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarToggle">
-                <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="{% url 'gallery-Home'%}">Home</a>
-
-                </div>
-                <!--Navbar Right Side-->
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="#">Login</a>
-                    <a class="nav-item nav-link" href="#">Register</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>

@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Uploader,Image,Location
+from .models import Image,Location
 import datetime as dt
 
 # Create your tests here.
@@ -12,3 +12,4 @@ class UploaderTestCase(TestCase):
         self.uploader.save_uploader()
         q_object=Uploader.objects.get(firtst_name='John')
         self.assertEqual(q_object.first_name,'John')
+        # self.assertEqual(q_object.first_name,'John')

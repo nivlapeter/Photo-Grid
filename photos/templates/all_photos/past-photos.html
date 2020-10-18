@@ -1,1 +1,28 @@
-{%extends 'all_photos/base.html'%} {% blockcontent %} {{block.super}} {% endblock content %}
+{%extends 'all_photos/base.html'%} {% block content %} {{block.super}}
+<div class="container">
+    <div class="row"></div>
+    {% for image in photos %}
+    <div class="col-md-4">
+        <a href="{{image.img.url}}" class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" data-fancy="images" data-buttons='["zoom","slideshow","fullscreen","thumbs","share","close"]' data-caption=` <p>{{image.description}}</p>
+                <p>Category: {{image.category}}</p>
+                <button class="btn btn-outline-light" onclick="copylink()">📋copylink</button>
+                
+    <img class="roundedimg-fluid" src="{{image.img.url}}" alt="{{image.name}}"></a>
+        <input type="text" id="imagelink" class="invisible form-control input-sm d-none" value="{{image.img.url}}">
+        <div class="description">
+            <h6 class="text">{{image.name}}</h6>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+</div>
+
+<script>
+    function copyLink() {
+        var copyText = document.getElementById("imagelink");
+        copyText.select();
+        document.execCommand("copy");
+        alert("Link copied to clipboard: " + copyText.value);
+    }
+</script>
+{% endblock content %}

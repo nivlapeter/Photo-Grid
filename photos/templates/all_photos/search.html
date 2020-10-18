@@ -1,1 +1,50 @@
-{%extends 'all_photos/base.html'%} {% blockcontent %} {{block.super}} {% endblock content %}
+{%extends 'all_photos/base.html'%} {% block content %} {{block.super}}
+<div class="container">
+    <div class="row">
+        {% if category %}
+        <h2> Found {{category|length}} of searched term {{message}}</h2>
+        {%else%}
+        <h2>Found 0 Categories for searched term {{message}}</h2>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% if location %}
+        <h2> Found {{location|length}} of searched term {{message}}</h2>
+        {%else%}
+        <h2>Found 0 locations for searched term {{message}}</h2>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% if images %}
+        <h2> Found {{images|length}} of searched term {{message}}</h2>
+        {%else%}
+        <h2>Found 0 images for searched term {{message}}</h2>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% if images %} {% for image in images %}
+        <div class="col-sm-6">
+            <img src="{{image.img.url}}" class="img-responsive" alt="">
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">{{image.title}}</h1>
+                    <hr>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <p> Description: <span style="font-style: italic">{{image.description}}</span></p>
+        </div>
+        <div class="col-md-12">
+            <p style="text-align: right;"><span style="font-weight: bold;">Location:</span> <span style="font-style: italic"><a href="location/{{image.location.id}}">{{ image.locations }}</a></span></p>
+        </div>
+
+        {% endfor %} {% endif %}
+    </div>
+</div>
+{% endblock content %}

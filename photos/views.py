@@ -1,19 +1,19 @@
 from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 import datetime as dt
-from django.http import Http404
 from .models import Image
 
 
 # Create your views here.
 def photos_today(request):
     date=dt.date.today()
-    photos=Image.today_images()
+    photos=Image.objects.all()
+    title = 'Home'
     return render(request, 'all_photos/index.html',{"date":date, "photos":photos})
 
 def past_days_photos(request,past_date):
     try:
-        date=dy.datetime.strptime(past_date,'%Y-%m-%d').date()
+        date=dt.datetime.strptime(past_date,'%Y-%m-%d').date()
 
     except ValueError:
         raise Http404()
@@ -21,7 +21,7 @@ def past_days_photos(request,past_date):
     if date==dt.date.today():
         return redirect(photos_today)
 
-    photos=Image.days_photos(date)
+    photos=Image.objects.all()
     return render(request,'all_photos/past-photos.html',{"date":date},{"photos",photos})
 
 def search_results(request):
