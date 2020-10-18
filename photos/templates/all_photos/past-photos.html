@@ -3,7 +3,7 @@
     <div class="row"></div>
     {% for image in photos %}
     <div class="col-md-4">
-        <a href="{{image.img.url}}" class="img-responsive" style="display: block; margin-left: auto; margin-right: auto; width: 50%;" data-fancy="images" data-buttons='["zoom","slideshow","fullscreen","thumbs","share","close"]' data-caption=` <p>{{image.description}}</p>
+        <a href="{{image.img.url}}" data-fancy="images" data-buttons='["zoom","slideshow","fullscreen","thumbs","share","close"]' data-caption=< p>Description: {{image.description}}</p>
                 <p>Category: {{image.category}}</p>
                 <button class="btn btn-outline-light" onclick="copylink()">📋copylink</button>
                 
